@@ -2,10 +2,15 @@ from django.db import models
 
 class Department(models.Model):
     """Department model class."""
+    department_id = models.AutoField(primary_key=True, auto_created=True)
     name = models.CharField(max_length=30, blank=False, unique=True)
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    def __unicode__(self):
+        return self.name
+
 
 class Employee(models.Model):
     """Employee model class."""
@@ -13,10 +18,13 @@ class Employee(models.Model):
     email = models.EmailField(blank=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, related_name='employees', on_delete=models.CASCADE)
 
     def __str__(self):
         return '{}'.format(self.name)
+
+    def __unicode__(self):
+        return self.name
 
     class Meta:
         ordering = ('name',)

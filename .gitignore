@@ -102,3 +102,6 @@ ENV/
 
 # Intellij IDE
 .idea/
+
+# Database
+*.sqlite3
