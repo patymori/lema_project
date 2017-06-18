@@ -3,4 +3,3 @@ djangorestframework==3.6.3
 python-decouple==3.0
 pytz==2017.2
 gunicorn==19.7.1
-django-extensions==1.7.9
