@@ -2,7 +2,7 @@ from django.db import models
 
 class Department(models.Model):
     """Department model class."""
-    department_id = models.AutoField(primary_key=True, auto_created=True)
+    code = models.CharField(max_length=4, primary_key=True)
     name = models.CharField(max_length=30, blank=False, unique=True)
 
     def __str__(self):
