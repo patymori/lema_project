@@ -11,18 +11,17 @@ class DepartmentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Department
-        fields = ('name')
+        fields = ('code', 'name')
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
     """Employee JSON serializer"""
-    department_name = DepartmentSerializer(required=True)
 
     class Meta:
         model = Employee
-        fields = ('name', 'email', 'department_name')
+        fields = ('pk', 'name', 'email', 'department')
 
     def create(self, validated_data):
-        department_name = validated_data.pop('department_name')
-        department = Department.objects.create(**department_name)
-        employee = Employee.objects.create(department=department, **validated_data)
+        employee = Employee.objects.create(**validated_data)
+        employee.save()
+        return employee
