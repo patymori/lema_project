@@ -32,18 +32,20 @@ source .venv/bin/activate
 4. Install project requirements
 `pip install -r requirements.txt`
 
+5. Create a Superuser to manage the system
+`./manage.py createsuperuser`
+
 
 ## Running the project
 
-`python3 manage.py runserver`
+`./manage.py runserver`
 
 
 ## Running Tests
 
-`python3 manage.py test`
+`./manage.py test`
 
 
-## Access to Admin interface
-Create a superuser to access Admin interface
+## How to use
 
-`python manage.py createsuperuser`
+Access Admin interface URL: `http://127.0.0.1:8000/admin`
