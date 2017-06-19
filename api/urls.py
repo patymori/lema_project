@@ -12,7 +12,7 @@ urlpatterns = {
     url(r'^employee/$', EmployeeCreateView.as_view(), name='add'),
     url(r'^employee/$', EmployeeCreateView.as_view(), name='list'),
     url(r'^employee/(?P<pk>[0-9]+)/$', EmployeeDeleteView.as_view(), name='remove'),
-    url(r'^', schema_view)
+    url(r'^docs/$', schema_view),
 }
 
 urlpatterns = format_suffix_patterns(urlpatterns)
