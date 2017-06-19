@@ -49,3 +49,4 @@ source .venv/bin/activate
 ## How to use
 
 Access Admin interface URL: `http://127.0.0.1:8000/admin`
+Swagger API Documentation URL: `http://127.0.0.1:8000/docs`

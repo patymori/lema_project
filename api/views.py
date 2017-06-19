@@ -1,8 +1,26 @@
 from rest_framework import generics, response
 from rest_framework import status
+from rest_framework.permissions import AllowAny
+from rest_framework.schemas import SchemaGenerator
+from rest_framework.views import APIView
+from rest_framework_swagger import renderers
 
 from api.models import Department, Employee
 from api.serializers import DepartmentSerializer, EmployeeSerializer
+
+
+class SwaggerSchemaView(APIView):
+    """Swagger Schema View"""
+    permission_classes = [AllowAny]
+    renderer_classes =  [
+        renderers.OpenAPIRenderer,
+        renderers.SwaggerUIRenderer
+    ]
+
+    def get(self, request):
+        generator = SchemaGenerator()
+        schema = generator.get_schema(request=request)
+        return response.Response(schema)
 
 
 class DepartmentListView(generics.ListAPIView):
@@ -12,7 +30,13 @@ class DepartmentListView(generics.ListAPIView):
 
 
 class EmployeeCreateView(generics.ListCreateAPIView):
-    """Define service to create employees."""
+    """
+    get:
+    Return a list of all employees.
+
+    post:
+    Create a new employee.
+    """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
@@ -26,5 +50,8 @@ class EmployeeCreateView(generics.ListCreateAPIView):
 
 
 class EmployeeDeleteView(generics.DestroyAPIView):
+    """delete:
+    Delete an employee.
+    """
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
