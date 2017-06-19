@@ -11,12 +11,11 @@ from .models import Employee, Department
 class TestDepartment(TestCase):
     """Department test case."""
 
-    client = None
+    client = APIClient()
 
     @classmethod
     def setUpClass(cls):
         super(TestDepartment, cls).setUpClass()
-        client = APIClient()
 
     def setUp(self):
         """Create departments to use in tests"""
@@ -40,12 +39,11 @@ class TestDepartment(TestCase):
 class TestEmployee(TestCase):
     """Employee test case."""
 
-    client = None
+    client = APIClient()
 
     @classmethod
     def setUpClass(cls):
         super(TestEmployee, cls).setUpClass()
-        client = APIClient()
 
     def setUp(self):
         """Create departments to use in tests"""

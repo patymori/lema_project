@@ -12,6 +12,7 @@ LEMA offers an admin WEB interface to manage employees' data and a REST API to l
 - GIT
 - Python 3.6.1
 
+#### Linux:
 `sudo apt-get install git python3.6.1 `
 
 ### Installation
@@ -30,9 +31,24 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 4. Install project requirements
+
 `pip install -r requirements.txt`
 
-5. Create a Superuser to manage the system
+5. Create .env file and set the following Environment variables:
+```
+SECRET_KEY=<secret key>
+ALLOWED_HOSTS=<allowed host separated by comma>
+```
+
+6. Run Database migration
+
+```
+./manage.py makemigrations api
+./manage.py migrate api
+```
+
+7. Create a Superuser to manage the system
+
 `./manage.py createsuperuser`
 
 
