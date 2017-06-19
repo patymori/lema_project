@@ -65,4 +65,5 @@ ALLOWED_HOSTS=<allowed host separated by comma>
 ## How to use
 
 Access Admin interface URL: `http://127.0.0.1:8000/admin`
+
 Swagger API Documentation URL: `http://127.0.0.1:8000/docs`
